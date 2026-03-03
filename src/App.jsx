@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import {useState , useEffect} from 'react'
+import Navbar from "../components/Navbar/Navbar.jsx"
+import Hero from '../components/Hero/Hero.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activeSection , setActiveSection] = useState("home");
+
+  useEffect(()=>{
+    const sections = ["home" , "about" , "skills" , "projects" , "contact"];
+
+    // IntersectionObserver(()=>{})
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e => {
+        if(e.isIntersecting) setActiveSection(e.target.id);
+      });
+    } , {threshold: 0.4});
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if(el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  } , []);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="bg-[#050505] text-white font-serif">
+        <Navbar activeSection={activeSection}/>
+        <Hero />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
     </>
   )
 }
 
-export default App
+export default App;
