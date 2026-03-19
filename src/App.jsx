@@ -2,6 +2,8 @@ import React from 'react'
 import {useState , useEffect} from 'react'
 import Navbar from "../components/Navbar/Navbar.jsx"
 import Hero from '../components/Hero/Hero.jsx';
+import About from '../components/About/About.jsx';
+import Skills from '../components/Skills/Skills.jsx';
 
 function App() {
   const [activeSection , setActiveSection] = useState("home");
@@ -29,6 +31,8 @@ function App() {
       <div className="bg-[#050505] text-white font-serif">
         <Navbar activeSection={activeSection}/>
         <Hero />
+        <About />
+        <Skills />
       </div>
       
     </>

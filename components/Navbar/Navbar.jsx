@@ -40,7 +40,7 @@ function NavBar(activeSection) {
                     {links.map((l)=>(
                         <button
                         key={l}
-                        onClick={()=>{scrollTo(l)}}
+                        onClick={()=>{scrollTo(l); console.log(l.toLowerCase())}}
                         className={`font-bebas tracking-widest text-sm transition-all duration-200 border-b-2 pb-1 ${
                             activeSection === l.toLowerCase() ? "text-orange-500 border-orange-500" : "text-gray-400 border-transparent hover:text-orange-500"
                         }`}>{l}</button>
