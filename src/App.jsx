@@ -6,12 +6,13 @@ import About from '../components/About/About.jsx';
 import Skills from '../components/Skills/Skills.jsx';
 import Projects from '../components/Projects/Projects.jsx';
 import DevStats from '../components/DevStats/DevStats.jsx';
+import Contact from '../components/Contact/Contact.jsx';
 
 function App() {
   const [activeSection , setActiveSection] = useState("home");
 
   useEffect(()=>{
-    const sections = ["home" , "about" , "skills" , "projects" , "contact"];
+    const sections = ["home" , "about" , "skills" , "projects", "devstats", "contact"];
 
     // IntersectionObserver(()=>{})
     const observer = new IntersectionObserver((entries)=>{
@@ -37,6 +38,7 @@ function App() {
         <Skills />
         <Projects />
         <DevStats />
+        <Contact />
       </div>
       
     </>

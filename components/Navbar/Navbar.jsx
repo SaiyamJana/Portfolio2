@@ -4,7 +4,7 @@ import {useState , useEffect} from 'react'
 function NavBar(activeSection) {
     const [scrolled , setScrolled] = useState(false);//for navbar background change on scroll
     const [menuOpen , setMenuOpen] = useState(false);//for mobile menu toggle
-    const links = ["Home" , "About" , "Skills" , "Projects" , "Contact"];
+    const links = ["Home" , "About" , "Skills" , "Projects", "DevStats" , "Contact"];
 
     useEffect(() => {
         const handler = () => {
