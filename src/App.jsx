@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar/Navbar.jsx"
 import Hero from '../components/Hero/Hero.jsx';
 import About from '../components/About/About.jsx';
 import Skills from '../components/Skills/Skills.jsx';
+import Projects from '../components/Projects/Projects.jsx';
+import DevStats from '../components/DevStats/DevStats.jsx';
 
 function App() {
   const [activeSection , setActiveSection] = useState("home");
@@ -33,6 +35,8 @@ function App() {
         <Hero />
         <About />
         <Skills />
+        <Projects />
+        <DevStats />
       </div>
       
     </>
