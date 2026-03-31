@@ -1,5 +1,4 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -8,36 +7,25 @@ const Contact = () => {
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.message) {
-    alert("Please fill all fields");
-    return;
-  }
+      alert("Please fill all fields");
+      return;
+    }
 
-  emailjs
-    .send(
-      "service_ms6ayo7",
-      "template_6j57k3e",
-      {
-        name: form.name,
-        email: form.email,
-        message: form.message,
-      },
-      "2F2d3frh_fBc-X8Mx"
-    )
-    .then(
-      () => {
-        setSent(true);
-        setForm({ name: "", email: "", message: "" });
-        setTimeout(() => setSent(false), 4000);
-      },
-      (error) => {
-        console.error(error);
-        alert("Failed to send message");
-      }
-    );
+    const formData = new FormData(e.target);
+
+    await fetch("/", {
+      method: "POST",
+      body: formData,
+    });
+
+    setSent(true);
+    setForm({ name: "", email: "", message: "" });
+
+    setTimeout(() => setSent(false), 4000);
   };
 
   const contactInfo = [
@@ -91,9 +79,17 @@ const Contact = () => {
 
           {/* Form */}
           <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
             className="bg-[#0d0d0d] border border-[#1a1a1a] p-10 relative"
           >
+            {/* Required hidden inputs */}
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="bot-field" />
+
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-orange-500 to-transparent" />
 
             {sent ? (
