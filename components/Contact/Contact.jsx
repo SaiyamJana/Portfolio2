@@ -11,34 +11,33 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // validation
     if (!form.name || !form.email || !form.message) {
-      alert("Please fill all fields");
-      return;
-    }
+    alert("Please fill all fields");
+    return;
+  }
 
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setSent(true);
-          setForm({ name: "", email: "", message: "" });
-          setTimeout(() => setSent(false), 4000);
-        },
-        (error) => {
-          console.error(error);
-          alert("Failed to send message");
-        }
-      );
+  emailjs
+    .send(
+      "service_ms6ayo7",
+      "template_6j57k3e",
+      {
+        name: form.name,
+        email: form.email,
+        message: form.message,
+      },
+      "2F2d3frh_fBc-X8Mx"
+    )
+    .then(
+      () => {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setSent(false), 4000);
+      },
+      (error) => {
+        console.error(error);
+        alert("Failed to send message");
+      }
+    );
   };
 
   const contactInfo = [
