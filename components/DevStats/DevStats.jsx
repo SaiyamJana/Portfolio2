@@ -2,9 +2,9 @@ import { Download } from "lucide-react";
 
 const DevStats = () => {
   const stats = [
-    { title: "LeetCode", value: "300+", subtitle: "Problems Solved" },
-    { title: "LeetCode", value: "1621", subtitle: "Max Rating" },
-    { title: "Codeforces", value: "996", subtitle: "Max Rating" },
+    { title: "LeetCode", value: "350+", subtitle: "Problems Solved" },
+    { title: "LeetCode", value: "1696", subtitle: "Max Rating" },
+    { title: "Codeforces", value: "1157", subtitle: "Max Rating" },
   ];
 
   return (
