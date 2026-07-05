@@ -45,7 +45,7 @@ const Skills = () => {
       ["CSS / Tailwind", 92],
     ],
     Backend: [
-      ["Node.js / Express", 60],
+      ["Node.js / Express", 85],
       ["Python", 82],
       ["PostgreSQL", 90],
       ["MongoDB", 85],
